@@ -1,15 +1,17 @@
+// ignore_for_file: depend_on_referenced_packages
+import 'package:cartoon_app/constant/my_color.dart';
+import 'package:cartoon_app/constant/my_constant.dart';
+import 'package:cartoon_app/widgets/home_widgets/home_clippers.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:complex_ui/screens/cartoon_ui/cart_clipper.dart';
-import 'package:complex_ui/screens/cartoon_ui/cartoon.dart';
 import 'package:vector_math/vector_math.dart' as math;
 
-class CartHPageItem extends StatefulWidget {
-  const CartHPageItem({Key? key}) : super(key: key);
+class HomePageItem extends StatefulWidget {
+  const HomePageItem({super.key});
   @override
-  State<CartHPageItem> createState() => _CartHPageItemState();
+  State<HomePageItem> createState() => _HomePageItemState();
 }
 
-class _CartHPageItemState extends State<CartHPageItem> {
+class _HomePageItemState extends State<HomePageItem> {
   final _controller = PageController(viewportFraction: 0.6);
   double value = 0;
 
@@ -26,13 +28,15 @@ class _CartHPageItemState extends State<CartHPageItem> {
 
   @override
   Widget build(BuildContext context) {
+    final items = MyConstant.cartoons;
     return PageView.builder(
       clipBehavior: Clip.none,
       controller: _controller,
-      itemCount: cartoons.length,
+      itemCount: items.length,
       itemBuilder: (context, i) {
         final percent = (i - value).clamp(-1, 1);
         final radias = math.radians(10.0 * percent);
+        final item = items[i];
         return Stack(
           children: [
             const Positioned(
@@ -43,7 +47,7 @@ class _CartHPageItemState extends State<CartHPageItem> {
               child: DecoratedBox(
                 decoration: BoxDecoration(boxShadow: [
                   BoxShadow(
-                    color: blueBack,
+                    color: MyColor.blueBack,
                     spreadRadius: 1,
                     blurRadius: 20,
                   )
@@ -55,7 +59,7 @@ class _CartHPageItemState extends State<CartHPageItem> {
                 alignment: Alignment.center,
                 transform: Matrix4.identity()..rotateZ(radias),
                 child: ClipPath(
-                  clipper: CartHItemClip(),
+                  clipper: HomeItemClip(),
                   child: Container(
                     padding: const EdgeInsets.all(0.3),
                     margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -64,7 +68,7 @@ class _CartHPageItemState extends State<CartHPageItem> {
                       gradient: const LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
-                        colors: [blueBack, whiteCardG1],
+                        colors: [MyColor.blueBack, MyColor.whiteCardG1],
                         stops: [0.0, 0.5],
                       ),
                     ),
@@ -75,7 +79,7 @@ class _CartHPageItemState extends State<CartHPageItem> {
                         gradient: const LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
-                          colors: [whiteItemG1, whiteCardG1],
+                          colors: [MyColor.whiteItemG1, MyColor.whiteCardG1],
                           stops: [0.15, 0.5],
                         ),
                       ),
@@ -86,8 +90,7 @@ class _CartHPageItemState extends State<CartHPageItem> {
                             bottom: -20,
                             left: -10,
                             right: -10,
-                            child: Image.asset(cartoons[i].img,
-                                fit: BoxFit.contain),
+                            child: Image.asset(item.img, fit: BoxFit.contain),
                           ),
                           // top Icon & bottom Text
                           Padding(
@@ -106,7 +109,10 @@ class _CartHPageItemState extends State<CartHPageItem> {
                                       gradient: const LinearGradient(
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,
-                                        colors: [whiteItemG1, whiteCardG1],
+                                        colors: [
+                                          MyColor.whiteItemG1,
+                                          MyColor.whiteCardG1
+                                        ],
                                       ),
                                       border: Border.all(
                                           width: .7,
@@ -116,25 +122,26 @@ class _CartHPageItemState extends State<CartHPageItem> {
                                       child: Icon(
                                         CupertinoIcons
                                             .dot_radiowaves_left_right,
-                                        color: blueBack,
+                                        color: MyColor.blueBack,
                                       ),
                                     ),
                                   ),
                                 ),
                                 const Spacer(),
                                 Text(
-                                  cartoons[i].title,
+                                  item.title,
                                   style: const TextStyle(
-                                    color: textColor,
+                                    color: MyColor.textColor,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 const SizedBox(height: 5),
-                                Text(cartoons[i].nickname,
+                                Text(item.nickname,
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
-                                        fontSize: 11, color: textColor)),
+                                        fontSize: 11,
+                                        color: MyColor.textColor)),
                                 const SizedBox(height: 20),
                               ],
                             ),

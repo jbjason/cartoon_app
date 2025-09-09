@@ -1,10 +1,9 @@
+import 'package:cartoon_app/constant/my_color.dart';
+import 'package:cartoon_app/constant/my_image.dart';
 import 'package:flutter/material.dart';
-import 'package:complex_ui/screens/cartoon_ui/cartoon.dart';
 
-class CartHAppbar extends StatelessWidget {
-  const CartHAppbar({
-    Key? key,
-  }) : super(key: key);
+class HomeAppbar extends StatelessWidget {
+  const HomeAppbar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +17,16 @@ class CartHAppbar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
               Text('Hey Jb Jason ..!',
-                  style:
-                      TextStyle(color: textColor, fontWeight: FontWeight.bold)),
+                  style: TextStyle(
+                      color: MyColor.textColor, fontWeight: FontWeight.bold)),
               Text('Find you correct status.',
-                  style: TextStyle(color: textColor, fontSize: 18)),
+                  style: TextStyle(color: MyColor.textColor, fontSize: 18)),
             ],
           ),
           const Spacer(),
-          _iconContainer('assets/cartoon/cartoon_icon/bing.png'),
+          _iconContainer(MyImage.bingImg),
           const SizedBox(width: 10),
-          _iconContainer('assets/cartoon/cartoon_icon/settings.png'),
+          _iconContainer(MyImage.settingsImg),
         ],
       ),
     );
@@ -41,7 +40,7 @@ class CartHAppbar extends StatelessWidget {
           gradient: const LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [blueBack, whiteCardG1],
+              colors: [MyColor.blueBack, MyColor.whiteCardG1],
               stops: [0.0, 0.7]),
         ),
         child: Container(
@@ -51,10 +50,10 @@ class CartHAppbar extends StatelessWidget {
             gradient: const LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [whiteItemG1, whiteCardG1],
+              colors: [MyColor.whiteItemG1, MyColor.whiteCardG1],
             ),
           ),
-          child: Image.asset(img, fit: BoxFit.contain, color: blueBack),
+          child: Image.asset(img, fit: BoxFit.contain, color: MyColor.blueBack),
         ),
       );
 }

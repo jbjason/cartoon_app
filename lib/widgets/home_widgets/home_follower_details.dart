@@ -1,24 +1,25 @@
+import 'package:cartoon_app/constant/my_color.dart';
+import 'package:cartoon_app/constant/my_constant.dart';
+import 'package:cartoon_app/widgets/home_widgets/home_clippers.dart';
 import 'package:flutter/material.dart';
-import 'package:complex_ui/screens/cartoon_ui/cart_clipper.dart';
-import 'package:complex_ui/screens/cartoon_ui/cartoon.dart';
 
-class CartHFollowerDetails extends StatelessWidget {
-  const CartHFollowerDetails({Key? key}) : super(key: key);
+class HomeFollowerDetails extends StatelessWidget {
+  const HomeFollowerDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final followerPercent = (cartoonUser[6].number / 2000);
+    final followerPercent = (MyConstant.cartoonUser[6].number / 2000);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        _followersText('${cartoonUser[6].number} ', ''),
+        _followersText('${MyConstant.cartoonUser[6].number} ', ''),
         SizedBox(
           height: 85,
           width: 85,
           child: CustomPaint(
-            painter: CartCircularprogress(
-              backColor: blueBack.withOpacity(.2),
-              frontColor: blueBack,
+            painter: HomeCircularprogress(
+              backColor: MyColor.blueBack.withOpacity(.2),
+              frontColor: MyColor.blueBack,
               strokeWidth: 13,
               value: followerPercent,
             ),
@@ -26,7 +27,7 @@ class CartHFollowerDetails extends StatelessWidget {
               child: Text(
                 '+${(followerPercent * 100).toStringAsFixed(0)}%',
                 style: const TextStyle(
-                    color: textColor, fontWeight: FontWeight.bold),
+                    color: MyColor.textColor, fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -44,7 +45,7 @@ class CartHFollowerDetails extends StatelessWidget {
               Text(
                 text,
                 style: const TextStyle(
-                    color: textColor,
+                    color: MyColor.textColor,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
               ),
@@ -54,14 +55,16 @@ class CartHFollowerDetails extends StatelessWidget {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: subText != '' ? blueBack.withOpacity(.2) : blueBack,
+                  color: subText != ''
+                      ? MyColor.blueBack.withOpacity(.2)
+                      : MyColor.blueBack,
                 ),
               ),
             ],
           ),
           Text(
             '$subText Follower\'s',
-            style: const TextStyle(color: textColor, fontSize: 11),
+            style: const TextStyle(color: MyColor.textColor, fontSize: 11),
           ),
         ],
       );

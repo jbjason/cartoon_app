@@ -1,17 +1,20 @@
+import 'package:cartoon_app/constant/my_color.dart';
+import 'package:cartoon_app/constant/my_constant.dart';
 import 'package:flutter/material.dart';
-import 'package:complex_ui/screens/cartoon_ui/cartoon.dart';
 
-class CartHActivityList extends StatelessWidget {
-  const CartHActivityList({Key? key}) : super(key: key);
+class HomeActivityList extends StatelessWidget {
+  const HomeActivityList({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final items = MyConstant.cartoonUser;
     return ListView.builder(
       scrollDirection: Axis.horizontal,
-      itemCount: cartoonUser.length,
+      itemCount: items.length,
       clipBehavior: Clip.none,
       itemBuilder: (context, i) {
-        final index = cartoonUser.length - i - 1;
+        final index = items.length - i - 1;
+        final item = items[index];
         return Container(
           width: 150,
           padding: const EdgeInsets.all(1),
@@ -21,7 +24,7 @@ class CartHActivityList extends StatelessWidget {
             gradient: const LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [blueBack, whiteCardG1],
+                colors: [MyColor.blueBack, MyColor.whiteCardG1],
                 stops: [0.0, 0.7]),
           ),
           child: Container(
@@ -31,22 +34,23 @@ class CartHActivityList extends StatelessWidget {
               gradient: const LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [whiteItemG1, whiteCardG1],
+                colors: [MyColor.whiteItemG1, MyColor.whiteCardG1],
               ),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  cartoonUser[index].title,
+                  item.title,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(color: textColor, fontSize: 11),
+                  style:
+                      const TextStyle(color: MyColor.textColor, fontSize: 11),
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  cartoonUser[index].number.toString(),
+                  item.number.toString(),
                   style: const TextStyle(
-                      color: textColor, fontWeight: FontWeight.bold),
+                      color: MyColor.textColor, fontWeight: FontWeight.bold),
                 ),
               ],
             ),

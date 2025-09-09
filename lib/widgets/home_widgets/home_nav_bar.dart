@@ -1,15 +1,15 @@
+import 'package:cartoon_app/constant/my_color.dart';
+import 'package:cartoon_app/widgets/home_widgets/home_clippers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:complex_ui/screens/cartoon_ui/cart_clipper.dart';
-import 'package:complex_ui/screens/cartoon_ui/cartoon.dart';
 
-class CartHNavBar extends StatefulWidget {
-  const CartHNavBar({Key? key}) : super(key: key);
+class HomeNavBar extends StatefulWidget {
+  const HomeNavBar({super.key});
   @override
-  State<CartHNavBar> createState() => _CartHNavBarState();
+  State<HomeNavBar> createState() => _HomeNavBarState();
 }
 
-class _CartHNavBarState extends State<CartHNavBar> {
+class _HomeNavBarState extends State<HomeNavBar> {
   int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -30,9 +30,9 @@ class _CartHNavBarState extends State<CartHNavBar> {
         child: InkWell(
           onTap: () => setState(() => _currentIndex = i),
           child: Container(
-            color: blueBack,
+            color: MyColor. blueBack,
             child: ClipPath(
-              clipper: i == _currentIndex ? CartHNavSelcted() : null,
+              clipper: i == _currentIndex ? HomeNavSelcted() : null,
               child: Container(
                 decoration: BoxDecoration(
                   //color: Colors.white38,
@@ -40,9 +40,9 @@ class _CartHNavBarState extends State<CartHNavBar> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      whiteCardG1.withOpacity(0.8),
-                      whiteCardG1.withOpacity(0.7),
-                      whiteCardG1.withOpacity(0.8),
+                   MyColor.   whiteCardG1.withOpacity(0.8),
+                   MyColor.   whiteCardG1.withOpacity(0.7),
+                    MyColor.  whiteCardG1.withOpacity(0.8),
                       //whiteCardG1,
                     ],
                   ),
@@ -50,7 +50,7 @@ class _CartHNavBarState extends State<CartHNavBar> {
                 child: Column(
                   children: [
                     const SizedBox(height: 2),
-                    Icon(icon, color: textColor),
+                    Icon(icon, color: MyColor.textColor),
                     const Spacer(),
                   ],
                 ),

@@ -17,7 +17,7 @@ abstract class MyConstant {
     Cartoon(
       title: '47 Ronin',
       nickname: 'A character from Japanese well-known Ancient History.',
-      img: 'assets/cartoon/cartoon_img/ronin.png',
+      img: MyImage.roninImg,
     ),
     Cartoon(
       title: 'The Joker',

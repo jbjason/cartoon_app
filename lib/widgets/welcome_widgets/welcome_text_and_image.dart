@@ -1,9 +1,10 @@
+import 'package:cartoon_app/screens/home_screen.dart';
+import 'package:cartoon_app/constant/my_color.dart';
+import 'package:cartoon_app/constant/my_image.dart';
 import 'package:flutter/material.dart';
-import 'package:complex_ui/screens/cartoon_ui/cart_home/cart_home_screen.dart';
-import 'package:complex_ui/screens/cartoon_ui/cartoon.dart';
 
-class CartWTextAndImage extends StatelessWidget {
-  const CartWTextAndImage({Key? key}) : super(key: key);
+class WelcomeTextAndImage extends StatelessWidget {
+  const WelcomeTextAndImage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class CartWTextAndImage extends StatelessWidget {
         _counter(),
         Expanded(child: _coverImage(context)),
         const SizedBox(height: 10),
-        const Text('Forget the Password', style: TextStyle(color: textColor)),
+        const Text('Forget the Password', style: TextStyle(color:MyColor. textColor)),
       ],
     );
   }
@@ -40,7 +41,7 @@ class CartWTextAndImage extends StatelessWidget {
         'Drive  ',
         style: TextStyle(
             fontSize: 63,
-            color: blueBack,
+            color: MyColor.blueBack,
             fontFamily: 'TitleFont',
             fontStyle: FontStyle.italic),
       );
@@ -48,7 +49,7 @@ class CartWTextAndImage extends StatelessWidget {
         text,
         style: const TextStyle(
           fontSize: 26,
-          color: textColor,
+          color: MyColor.textColor,
           letterSpacing: -1,
           wordSpacing: 3,
           fontWeight: FontWeight.w800,
@@ -57,7 +58,7 @@ class CartWTextAndImage extends StatelessWidget {
   Widget _subtitleText(String text) => Text(
         text,
         style:
-            const TextStyle(fontSize: 11, letterSpacing: 1, color: textColor),
+            const TextStyle(fontSize: 11, letterSpacing: 1, color:MyColor. textColor),
       );
   Widget _counter() => Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -68,7 +69,7 @@ class CartWTextAndImage extends StatelessWidget {
             height: 8,
             margin: const EdgeInsets.only(right: 5),
             decoration: BoxDecoration(
-              color: index == 0 ? blueBack : whiteCardG2,
+              color: index == 0 ?MyColor.blueBack : MyColor.whiteCardG2,
               borderRadius: BorderRadius.circular(15),
             ),
           ),
@@ -83,10 +84,10 @@ class CartWTextAndImage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => const CartHomeScreen()),
+                  MaterialPageRoute(builder: (_) => const HomeScreen()),
                 );
               },
-              child: Image.asset('assets/cartoon/cartoon_img/tango.png',
+              child: Image.asset(MyImage.tangoImg,
                   fit: BoxFit.contain),
             ),
           )
